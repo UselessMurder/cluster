@@ -1,0 +1,12 @@
+syntax = "proto3";
+package connecter; 
+
+service Connecter {
+	rpc SendMessage(Msg) returns (Msg) {}
+}
+
+message Msg {
+	repeated string header = 1;
+	repeated uint64 id = 2;
+	bytes data = 3;
+}

@@ -1,0 +1,69 @@
+syntax = "proto3";
+package models;
+
+message PiRequest {
+	uint64 radius = 1;
+	uint64 iterations = 2;
+}
+
+message PiResponse {
+	uint64 hit = 1;
+	uint64 iterations = 2;
+}
+
+message VMatrixRequest {
+	uint64 size = 1;
+	repeated double  vector = 2;
+	map<uint64, Row> matrixRows = 3;
+}
+
+message VMatrixResponse {
+	map<uint64, double> resultVector = 1;
+}
+
+message Row {
+	repeated double row = 1;
+}
+
+message WorkerLine {
+	repeated Worker workers = 1;
+}
+
+message Worker {
+	string addr = 1;
+	uint64 id = 2;
+}
+
+message MMatrixRequest {
+	uint64 i = 1;
+	uint64 j = 2;
+	uint64 rows = 4;
+	uint64 brows = 6;
+	uint64 bcolumns = 7;
+	uint64 iter = 8;
+	MMatrixResponse a = 9;
+	MMatrixResponse b = 10;
+}
+
+message WorkerNetwork {
+	map<uint64, WorkerLine> workerMatrix = 1;
+}
+
+message MMatrixResponse {
+	uint64 i = 1;
+	uint64 j = 2;
+	repeated Row t = 3;
+}
+
+message SortRequest {
+	uint64 iter = 1;
+	uint64 number = 2;
+	repeated uint32 dataLine = 3;
+}
+
+message SortResponse {
+	uint64 number = 1;
+	repeated uint32 dataLine = 2;
+}
+
+
