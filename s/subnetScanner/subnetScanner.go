@@ -28,6 +28,19 @@ func Create(postman *m.Messenger, cport string) *SubnetScanner {
 }
 
 func (ss *SubnetScanner) GetClients() map[string]string {
+	buntenko := false
+	if buntenko {
+		for k := range ss.clients {
+			delete(ss.clients, k)
+		}
+		ss.clients["localhost:11111"] = "01"
+		ss.clients["localhost:11112"] = "02"
+		ss.clients["localhost:11113"] = "03"
+		ss.clients["localhost:11114"] = "04"
+		ss.clients["localhost:11115"] = "05"
+		ss.clients["localhost:11116"] = "06"
+		return ss.clients
+	}
 	return ss.clients
 }
 
